@@ -35,9 +35,9 @@ int main (int argc, char *argv[]){
 	devices = p2p1.Install(nodes.Get(0), nodes.Get(1));
 	Ipv4InterfaceContainer interfaces = address.Assign (devices);
 
-	devices - p2p2.Install(nodes.Get(1),nodes.Get(2));
+	devices = p2p2.Install(nodes.Get(1),nodes.Get(2));
 	address.SetBase("10.1.2.0","255.255.255.0");
-	interfaces - address.Assign(devices);
+	interfaces = address.Assign(devices);
 
 	Ipv4GlobalRoutingHelper::PopulateRoutingTables();	
 
