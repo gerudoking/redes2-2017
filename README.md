@@ -3,7 +3,7 @@ Este projeto visa o entendimento dos conceitos da disciplina Redes de Computador
 Os integrantes do grupo para o desenvolvimento do projeto são:
   * Eduardo de Azevêdo dos Santos
   * Pedro Eugênio Carvalho
-  * Luiz Felipe Duarte
+  * Luiz Felipe Carvalho Duarte
   * Yero Távora
 
 ### Regras para a manutenção do Repositório
