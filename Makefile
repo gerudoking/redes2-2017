@@ -1,7 +1,8 @@
-all: install
+all: run
 
-SCR_DIR = redesSrc
-NS3_DIR = /mnt/c/ns-allinone-3.27/ns-3.27
+SCR_DIR = src
+#Apos ter sua copia do makefile, mude aonde esta localizado seu ns3. No entanto, procure manter o makefile no .gitignore
+NS3_DIR = ~/Desktop/ns3/ns-allinone-3.27/ns-3.27
 PROGRAM_NAME = base
 
 validate_ns3_dir:
@@ -12,9 +13,9 @@ ifeq ($(wildcard $(NS3_DIR)/waf), )
 	$(error The provided NS3_DIR parameter is not valid. NS3_DIR must contain the waf file. See README for more details)
 endif
 
-install: validate_ns3_dir
-		rm -rf $(NS3_DIR)/src/$(SCR_DIR)
-		cp -r redesSrc $(NS3_DIR)/src
+run: validate_ns3_dir
+		rm -rf $(NS3_DIR)/scratch/$(SCR_DIR)
+		cp -r src/. $(NS3_DIR)/scratch/
 		cd $(NS3_DIR); \
-		#./waf configure --enable-examples --enable-tests; \
-		./waf --run src/$(SCR_DIR)/$(PROGRAM_NAME)
+		./waf configure --build-profile=debug --enable-examples --enable-tests; \
+		./waf --run $(PROGRAM_NAME)
