@@ -2,7 +2,7 @@ all: run
 
 SCR_DIR = src
 #Apos ter sua copia do makefile, mude aonde esta localizado seu ns3. No entanto, procure manter o makefile no .gitignore
-NS3_DIR =~/Desktop/ns3/ns-allinone-3.27/ns-3.27
+NS3_DIR = /mnt/c/ns-allinone-3.27/ns-allinone-3.27/ns-3.27
 PROGRAM_NAME = base
 
 validate_ns3_dir:
