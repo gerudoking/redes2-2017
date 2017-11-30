@@ -94,19 +94,38 @@ int main (int argc, char *argv[]){
 }	
 
     NS_LOG_INFO("Create Applications.");
-
+	
 	uint16_t port = 4000;
-  	ApplicationContainer client,server;
+  	ApplicationContainer client,server,p2pClient1,p2pClient2,p2pServer1,p2pServer2;
 	UdpEchoServerHelper echoServerHelper(port);
 	server = echoServerHelper.Install(nodesRede1.Get(2));
 
 	UdpEchoClientHelper echoClientHelper(nodesRede1.Get(2)->GetObject<Ipv4>()->GetAddress(1,0).GetLocal(),port);
 	client = echoClientHelper.Install(nodesRede2.Get(2));
+
+	p2pServer1 = echoServerHelper.Install(nodesRede2.Get(1));
+	p2pServer2 = echoServerHelper.Install(nodesRede1.Get(1));
   	
+	UdpEchoClientHelper echoClientHelper2(nodesRede1.Get(1)->GetObject<Ipv4>()->GetAddress(1,0).GetLocal(),port);
+	p2pClient1 = echoClientHelper2.Install(nodesRede2.Get(1));
+
+	UdpEchoClientHelper echoClientHelper3(nodesRede2.Get(1)->GetObject<Ipv4>()->GetAddress(1,0).GetLocal(),port);
+	p2pClient2 = echoClientHelper3.Install(nodesRede1.Get(1));	
+
 	server.Start(Seconds(1));
 	server.Stop(Seconds(50));
 	client.Start(Seconds(2));
 	client.Stop(Seconds(49));
+	p2pClient1.Start(Seconds(2));
+	p2pServer1.Start(Seconds(1));
+	p2pClient1.Stop(Seconds(49));
+	p2pServer1.Stop(Seconds(50));
+	p2pClient2.Start(Seconds(2));
+	p2pServer2.Start(Seconds(1));
+	p2pClient2.Stop(Seconds(49));
+	p2pServer2.Stop(Seconds(50));
+
+	
 
   	/*uint32_t MaxPacketSize = 1024;
   	Time interPacketInterval = Seconds (0.05);
