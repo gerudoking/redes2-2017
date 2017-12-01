@@ -113,17 +113,17 @@ int main (int argc, char *argv[]){
 	p2pClient2 = echoClientHelper3.Install(nodesRede1.Get(1));	
 
 	server.Start(Seconds(1));
-	server.Stop(Seconds(50));
+	server.Stop(Seconds(120));
 	client.Start(Seconds(2));
-	client.Stop(Seconds(49));
+	client.Stop(Seconds(119));
 	p2pClient1.Start(Seconds(2));
 	p2pServer1.Start(Seconds(1));
-	p2pClient1.Stop(Seconds(49));
-	p2pServer1.Stop(Seconds(50));
+	p2pClient1.Stop(Seconds(119));
+	p2pServer1.Stop(Seconds(120));
 	p2pClient2.Start(Seconds(2));
 	p2pServer2.Start(Seconds(1));
-	p2pClient2.Stop(Seconds(49));
-	p2pServer2.Stop(Seconds(50));
+	p2pClient2.Stop(Seconds(119));
+	p2pServer2.Stop(Seconds(120));
 
 	
 
@@ -149,7 +149,7 @@ int main (int argc, char *argv[]){
 	anima.SetConstantPosition (nodes.Get(9),120.0,40.0);
 	anima.SetConstantPosition (nodes.Get(10),120.0,60.0);
 
-	Simulator::Stop(Seconds(50));
+	Simulator::Stop(Seconds(120));
 	Simulator::Run();
 	Simulator::Destroy();
 
